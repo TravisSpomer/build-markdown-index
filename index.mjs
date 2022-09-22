@@ -53,7 +53,8 @@ async function indexFolder(index, dir, prefix)
 			const contents = await fs.readFile(localPath, { encoding: "utf-8" })
 			const fm = FrontMatter(contents)
 			const properties = fm.attributes
-			delete fm.attributes.layout
+			delete properties.layout
+			delete properties.seealso
 			index.push({
 				...properties,
 				path: prefix + pathParts.name,
